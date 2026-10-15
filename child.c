@@ -1877,6 +1877,9 @@ kworker_fcgi_stdin(struct fcgi_buf *b, const struct fcgi_hdr *hdr,
 		hdr->contentLength + 
 		hdr->paddingLength, &er);
 
+	if (bp == NULL)
+		return er;
+
 	/* 
 	 * Short-circuit: no data to read.
 	 * The caller should detect this and stop reading from the
